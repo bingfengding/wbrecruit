@@ -23,7 +23,7 @@
         </div>
         <div class="content">
           <Sidebar class="sidebar" :pose="isVisible ? 'visible': 'hidden'">
-            <Item class="item firstItem" >
+            <Item class="item firstItem">
               <div class="itemHeader">
                 <div class="frItem frItem1">职位</div>
                 <div class="frItem frItem2">部门</div>
@@ -41,9 +41,9 @@
                 :class="accordionIndex ==item.id ?'isshow': 'ishide'"
                 :ref="'itemMain'+index"
               >
-                <p class="orange">工作内容</p>
-                <p v-html="item.cn_require_content" class="itemMainCon"></p>
                 <p class="orange">任职要求</p>
+                <p v-html="item.cn_require_content" class="itemMainCon"></p>
+                <p class="orange">工作内容</p>
                  <p v-html="item.cn_work_content" class="itemMainCon"></p>
                   <div class="itemMainBtn">
                     <div class="btn" @click="gotoUs(item.id)">
@@ -394,8 +394,6 @@ export default {
   },
   created(){
     
-    
-   
     
   },
   methods:{

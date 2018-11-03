@@ -490,25 +490,26 @@ export default {
         console.log(1)
       },
       uploadChange(file, fileList){
-
+        console.log(file)
         if(file.size >1024*1024){
     
           this.$message.error("文件大小不能超过1MB")
           this.$refs.upload.clearFiles()
-         this.ruleForm.file =""
-         this.ruleForm.other = ""
-         this.fileList = []
+          this.ruleForm.file =""
+          this.ruleForm.other = ""
+          this.fileList = []
         }else{
 
           let reader = new FileReader()
-        reader.readAsDataURL(file.raw)
-        reader.onload = () => {
-          console.log(file)
-          this.$refs.upload.clearFiles()
-          this.fileList = fileList
-          this.ruleForm.file =  reader.result
-          this.ruleForm.other = file
-        }
+          reader.readAsDataURL(file.raw)
+          reader.onload = () => {
+            
+            this.$refs.upload.clearFiles()
+            this.fileList = fileList
+            this.ruleForm.file =  reader.result
+            this.ruleForm.other = file
+            console.log(file)
+          }
         }
         
         

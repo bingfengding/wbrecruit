@@ -5,7 +5,7 @@
     </div>
     <div class="main">
       <div class="mainCen">
-        <div class="item" :class="index%2===0 ? 'textRight':''" v-for="(item,index) in list" :key="index">
+        <div class="item" :class="index%2===0 ? 'textRight':'textLeft'" v-for="(item,index) in list" :key="index">
           <div class="imgBox animated" v-if="index%2===0" :class="scrolled>(baseTop+index*300)?'fadeInLeft':'fadeOutDown'">
             <img :src="item.image" alt="">
           </div>

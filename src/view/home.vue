@@ -175,7 +175,7 @@ export default {
   },
   created(){
     getdepartment().then(res=>{
-      if(res.status){
+      if(res.status == 200){
         let _base = res.data.data
         this.domain = _base.domain
         let _arr = []
