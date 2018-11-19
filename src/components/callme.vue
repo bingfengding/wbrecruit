@@ -14,7 +14,7 @@
         </p> 
         <div class="line"></div>
         <p class="tellUsText">
-          <a href="http://wpa.qq.com/msgrd?v=3&uin=1607005518&site=qq&menu=yes" target="_blank">
+          <a href="https://wpa.qq.com/msgrd?v=3&uin=1607005518&site=qq&menu=yes" target="_blank">
           <span class="tellUsIcon"><img src="../image/qq.png" alt=""></span>
           </a>
         </p>

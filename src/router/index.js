@@ -92,10 +92,44 @@ const router = new Router({
   routes: RouterMap
 });
   
+
 router.beforeEach((to, from, next) => {
   store.commit('setName',to.name)
   window.sessionStorage.setItem('name',to.name)
-  next()
+  let locationA = window.location
+  let hostname = window.location.hostname
+  
+  let re = /^www/
+  let isH5 = re.test(hostname)
+  function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone",
+      "iPad", "iPod"
+    ];
+    var flag = true;
+    for (var v = 0; v <
+      Agents.length; v++) {
+      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+        flag = false;
+        break;
+      }
+    }
+    return flag;
+  }
+  if(IsPC()){
+    
+    next()
+  }else{
+    window.location.href = "https://m.newlinkenterprise.com"
+    if(isH5){//手机端点击了电脑网站
+  
+      // let newName = hostname.replace(/www/,'m')
+      
+      // window.location.href = locationA.protocol +"//"+ newName
+      
+    }
+    next()
+  }
+  
 })
-
 export default router;

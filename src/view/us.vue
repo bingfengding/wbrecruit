@@ -45,6 +45,12 @@
             </p>
             <div class="formBox">
               <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                <el-form-item label="面试职位：" prop="note">
+                  <el-input v-model="ruleForm.note" 
+                  size="small"
+                  maxlength="20"
+                  ></el-input>
+                </el-form-item>
                 <el-form-item label="姓名：" prop="name">
                   <el-input v-model="ruleForm.name" 
                   size="small"
@@ -188,6 +194,7 @@ export default {
       position:0,
       cenTop:936,
       ruleForm:{
+        note:"",
         name:"",
         wechat:"",
         skype:"",
@@ -198,6 +205,9 @@ export default {
         qq:""
       },
       rules: {
+        note:[{
+          required: true, message: '请输入面试职位名称', trigger: 'blur' 
+        }],
         name: [
           { required: true, message: '请输入您的名字', trigger: 'blur' },
         ],
@@ -425,10 +435,10 @@ export default {
       
     },
     email(){
-      window.open("mailto:newlinkteam@gmail.com")
+      window.top.open("mailto:newlinkteam@gmail.com")
     },
     skype(){
-      window.open("skype:diana7166sz@gmail.com?chat")
+      window.top.open("skype:diana7166sz@gmail.com?chat")
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
@@ -448,7 +458,7 @@ export default {
             }else{
               _data = this.ruleForm
             }
-             console.log(_data)
+    
             upload(_data).then(res=>{
               this.$message.success("提交成功")
               this.$refs.recaptcha.reset()
@@ -456,7 +466,7 @@ export default {
               this.file = ""
               this.verify = false
             }).catch((res)=>{
-              console.log(res)
+          
               this.$refs.recaptcha.reset()
               this.fileList = []
               this.file = ""
@@ -499,18 +509,16 @@ export default {
           this.ruleForm.other = ""
           this.fileList = []
         }else{
-
           let reader = new FileReader()
           reader.readAsDataURL(file.raw)
           reader.onload = () => {
-            
-            this.$refs.upload.clearFiles()
-            this.fileList = fileList
-            this.ruleForm.file =  reader.result
-            this.ruleForm.other = file
-            console.log(file)
-          }
+          this.$refs.upload.clearFiles()
+          this.fileList = fileList
+          this.ruleForm.file =  reader.result
+          this.ruleForm.other = file
+          console.log(file)
         }
+      }
         
         
       },

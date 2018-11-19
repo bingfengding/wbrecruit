@@ -16,8 +16,8 @@ import VueLazyLoad from 'vue-lazyload'
 
 Vue.config.productionTip = false
 Vue.use(VueLazyLoad,{
-  error:'../static/error.png',
-  loading:'../static/loading.gif'
+  error:'./static/error.png',
+  loading:'./static/loading.gif'
 })
 Vue.use(ElementUI)
 Vue.use(VueAwesomeSwiper)
