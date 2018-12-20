@@ -117,15 +117,14 @@ router.beforeEach((to, from, next) => {
     return flag;
   }
   if(IsPC()){
-    
     next()
   }else{
-    window.location.href = "https://m.newlinkenterprise.com"
+    window.top.location.href = "https://m.newlinkenterprise.com"
     if(isH5){//手机端点击了电脑网站
   
       // let newName = hostname.replace(/www/,'m')
       
-      // window.location.href = locationA.protocol +"//"+ newName
+      // window.top.location.href = locationA.protocol +"//"+ newName
       
     }
     next()

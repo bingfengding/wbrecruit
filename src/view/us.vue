@@ -63,7 +63,7 @@
                   size="small"
                   ></el-input>
                 </el-form-item>
-                 <el-form-item label="电话号码：" prop="phone">
+                 <el-form-item label="手机号码：" prop="phone">
                   <el-input v-model="ruleForm.phone"
                   type="number"
                   min="0"
@@ -209,7 +209,7 @@ export default {
           required: true, message: '请输入面试职位名称', trigger: 'blur' 
         }],
         name: [
-          { required: true, message: '请输入您的名字', trigger: 'blur' },
+          { required: true, message: '请输入您的姓名', trigger: 'blur' },
         ],
         email: [
           { required: true, message: '请输入您的电子邮箱', trigger: 'blur' },
@@ -438,7 +438,7 @@ export default {
       window.top.open("mailto:newlinkteam@gmail.com")
     },
     skype(){
-      window.top.open("skype:diana7166sz@gmail.com?chat")
+      window.top.open("skype:nletpse@maxoof.net?chat")
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
@@ -497,10 +497,10 @@ export default {
         this.$router.push(url)
       },
       success(res, file, fileList){
-        console.log(1)
+        
       },
       uploadChange(file, fileList){
-        console.log(file)
+       
         if(file.size >1024*1024){
     
           this.$message.error("文件大小不能超过1MB")
@@ -509,14 +509,24 @@ export default {
           this.ruleForm.other = ""
           this.fileList = []
         }else{
-          let reader = new FileReader()
-          reader.readAsDataURL(file.raw)
-          reader.onload = () => {
-          this.$refs.upload.clearFiles()
-          this.fileList = fileList
-          this.ruleForm.file =  reader.result
-          this.ruleForm.other = file
-          console.log(file)
+          
+          if(file.raw.type != "application/msword" && file.raw.type != "application/pdf" && file.raw.type != "application/vnd.openxmlformats-officedocument.wordprocessingml.document"){
+            this.$message.error("请选择正确的文件格式")
+            this.$refs.upload.clearFiles()
+            this.ruleForm.file =""
+            this.ruleForm.other = ""
+            this.fileList = []
+          }else{
+            let reader = new FileReader()
+            reader.readAsDataURL(file.raw)
+            reader.onload = () => {
+            this.$refs.upload.clearFiles()
+            this.fileList = fileList
+            this.ruleForm.file =  reader.result
+            this.ruleForm.other = file
+           
+          }
+          
         }
       }
         
